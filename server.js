@@ -1,7 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -20,9 +20,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(function(req, res, next){
- res.render('maintainance.hbs');
-} );
+// app.use(function(req, res, next){
+//  res.render('maintainance.hbs');
+// } );
 hbs.registerHelper('getCurrentYear', function(){
   return new Date ().getFullYear();
 });
@@ -46,6 +46,6 @@ app.get('/bad', function(req, res){
     errorMessage: 'Unable to fulfill the request'
   })
 });
-app.listen(3000, function(){
-  console.log('Server is up and running');
+app.listen(port, function(){
+  console.log(`Server is up and running on ${port}`);
 });
