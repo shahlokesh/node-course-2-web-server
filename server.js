@@ -29,6 +29,14 @@ hbs.registerHelper('getCurrentYear', function(){
 hbs.registerHelper('screamIt', function(text){
   return text;
 });
+app.get('/projects',function(req, res){
+  res.render('projects.hbs', {
+    pageTitle: 'Projects',
+    welcomeMessage: 'This is my project page'
+  });
+});
+
+
  app.get('/', function(req,res){
    //res.send('Hello Express!');
    res.render('home.hbs', {
